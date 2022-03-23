@@ -12,8 +12,8 @@ public class TestValidPesel {
         expectedBody = "{\"pesel\":\""+pesel+"\",\"isValid\":"+isValid+",\"dateOfBirth\":\""+dateOfBirth+"T00:00:00\","+ "\"gender\":\""+gender+"\",\"errors\":[]}";
 
         return expectedBody;
-
     }
+
     @Test
 
     public void should_getValidBirthDate_when_peselIsFromXXCentury_80013113577() {

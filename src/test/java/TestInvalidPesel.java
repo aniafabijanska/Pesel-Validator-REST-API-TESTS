@@ -31,16 +31,16 @@ public class TestInvalidPesel {
         return expectedBody;
     }
 
-        @Test
+    @Test
 
-        public void should_getInvalidPesel_with_errorCode_INVC() {
+    public void should_getInvalidPesel_with_errorCode_INVC() {
         String pesel = "11111111111";
         String expectedBody = GenerateExpectedResult(pesel, false, "1911-11-11","Male", "INVC","Check sum is invalid. Check last digit.");
         Response response = get("https://peselvalidatorapitest.azurewebsites.net/api/Pesel?pesel=" + pesel);
 
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
-        }
+    }
 
     @Test
 
@@ -122,11 +122,7 @@ public class TestInvalidPesel {
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
     }
-
-
-
-
-    }
+}
 
 
 
