@@ -4,32 +4,33 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.get;
 
-public class RestApiExemple {
+public class RestApiTest {
 
     String expectedBody;
 
-    private String checkPriseOfGold(String Data, String CenaZłota) {
+    private String checkPriseOfGold(String date, String thePriceOfGold) {
 
-        expectedBody = "[{\"data\":\"" + Data + "\",\"cena\":" + CenaZłota + "}]";
+        expectedBody = "[{\"data\":\"" + date + "\",\"cena\":" + thePriceOfGold + "}]";
 
         return expectedBody;
     }
 
     @Test
     public void getValidPriceOfGold2013January2nd() {
-        String data = "2013-01-02";
-        String cenaZłota = "165.83";
-        checkPriseOfGold(data,  cenaZłota);
-        Response response = get("http://api.nbp.pl/api/cenyzlota/" + data);
+        String date = "2013-01-02";
+        String thePriceOfGold = "165.83";
+        checkPriseOfGold(date, thePriceOfGold);
+        Response response = get("http://api.nbp.pl/api/cenyzlota/" + date);
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
     }
+
     @Test
     public void getValidPriceOfGold2017January2nd() {
-        String data = "2017-01-02";
-        String cenaZłota = "155.76";
-        checkPriseOfGold(data,  cenaZłota);
-        Response response = get("http://api.nbp.pl/api/cenyzlota/" + data);
+        String date = "2017-01-02";
+        String thePriceOfGold = "155.76";
+        checkPriseOfGold(date, thePriceOfGold);
+        Response response = get("http://api.nbp.pl/api/cenyzlota/" + date);
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
     }
@@ -41,7 +42,7 @@ public class RestApiExemple {
                 "https://www.pexels.com/photo/brown-rocks-during-golden-hour-2014422/\",\"" +
                 "photographer\":\"Joey Farina\",\"photographer_url\":\"https://www.pexels.com/@joey\"" +
                 ",\"photographer_id\":680589,\"avg_color\":\"#978E82\",\"src\":{\"original\":\"" +
-                "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg\",\"large2x\":"+
+                "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg\",\"large2x\":" +
                 "\"https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress\\u0026cs=tinysrgb\\u0026dpr=2\\u0026h=650\\u0026w=940\",\"large\":" +
                 "\"https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress\\u0026cs=tinysrgb\\u0026h=650\\u0026w=940\",\"medium\":" +
                 "\"https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress\\u0026cs=tinysrgb\\u0026h=350\",\"small\":" +
@@ -53,16 +54,13 @@ public class RestApiExemple {
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
     }
+
     @Test
     public void getPhotoId() {
 
         int i = 2014422;
-       getPhotoId(2014422);
+        getPhotoId(2014422);
     }
-
-
-
-
 }
 
 

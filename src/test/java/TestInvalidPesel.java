@@ -38,7 +38,6 @@ public class TestInvalidPesel {
         Assert.assertEquals(actualBody, expectedBody);
     }
 
-
     @Test
     public void getDataForInvalidPesel_with_errorCode_NBRQ() {
 
@@ -190,10 +189,11 @@ public class TestInvalidPesel {
         String actualBody = response.getBody().asString();
         Assert.assertEquals(actualBody, expectedBody);
     }
-        @Test
-        public void getDataForInvalidPesel_with_errorCode_INVY_INVM() {
-            String pesel = "81600150504";
-            getDataForInvalidPesel_with_errorCode_INVY_INVM(pesel, false, "null", "Female", "INVY", "Invalid year.", "INVM", "Invalid month.");
-        }
+
+    @Test
+    public void getDataForInvalidPesel_with_errorCode_INVY_INVM() {
+        String pesel = "81600150504";
+        getDataForInvalidPesel_with_errorCode_INVY_INVM(pesel, false, "null", "Female", "INVY", "Invalid year.", "INVM", "Invalid month.");
+    }
 
 }

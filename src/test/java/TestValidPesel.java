@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import static io.restassured.RestAssured.get;
 
 public class TestValidPesel {
-        private void generateExpectedResult(String pesel, boolean isValid, String dateOfBirth, String gender) {
+    private void generateExpectedResult(String pesel, boolean isValid, String dateOfBirth, String gender) {
 
         String path = "https://peselvalidatorapitest.azurewebsites.net/api/Pesel?pesel=" + pesel;
         String expectedBody = "{\"pesel\":\"" + pesel + "\",\"isValid\":" +
