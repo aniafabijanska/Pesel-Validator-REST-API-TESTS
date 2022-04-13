@@ -74,7 +74,7 @@ public class TestInvalidPesel {
     @Test
     public void getDataForInvalidPesel_with_errorCode_INVD() {
         String pesel = "71222978053";
-        getDataForInvalidPesel_with_errorCode_INVD(pesel, false, "null", "Male", "INVD", "Invalid day.");
+        getDataForInvalidPesel_with_errorCode_INVD(pesel, false, null, "Male", "INVD", "Invalid day.");
     }
 
     @Test
