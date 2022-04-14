@@ -9,6 +9,9 @@ public class TestInvalidPesel {
                                                             String errorCode, String errorMessage) {
 
         String path = "https://peselvalidatorapitest.azurewebsites.net/api/Pesel?pesel=" + pesel;
+        if (dateOfBirth==null){
+            dateOfBirth="T00:00:00";
+        }
         String expectedBody = "{\"pesel\":\"" + pesel + "\",\"isValid\":" +
                 isValid + ",\"dateOfBirth\":\"" + dateOfBirth + "T00:00:00\"," + "\"gender\":\"" +
                 gender + "\",\"errors\":[{\"errorCode\":\"" + errorCode + "\",\"errorMessage\":\"" +
@@ -42,19 +45,19 @@ public class TestInvalidPesel {
     public void getDataForInvalidPesel_with_errorCode_NBRQ() {
 
         String pesel = "8902295678k";
-        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, "null", "null", "NBRQ", "Invalid characters. Pesel should be a number.");
+        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, null, null, "NBRQ", "Invalid characters. Pesel should be a number.");
     }
 
     @Test
     public void getDataForInvalidPesel_with_errorCode_INVL_andIsToShort() {
         String pesel = "5522297805";
-        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, "null", "null", "INVL", "Invalid length. Pesel should have exactly 11 digits.");
+        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, null, null, "INVL", "Invalid length. Pesel should have exactly 11 digits.");
     }
 
     @Test
     public void getDataForInvalidPesel_with_errorCode_INVL_TooLong() {
         String pesel = "123456789012";
-        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, "null", "null", "INVL", "Invalid length. Pesel should have exactly 11 digits.");
+        getDataForInvalidPesel_with_errorCodeNBRQOrINVL(pesel, false, null, null, "INVL", "Invalid length. Pesel should have exactly 11 digits.");
     }
 
     private void getDataForInvalidPesel_with_errorCode_INVD(String pesel, boolean isValid, String dateOfBirth, String gender,
@@ -174,7 +177,7 @@ public class TestInvalidPesel {
     @Test
     public void getDataForInvalidPesel_with_errorCode_INVY_INVM_INVD() {
         String pesel = "00000000000";
-        getDataForInvalidPesel_with_errorCode_INVY_INVM_INVD(pesel, false, "null", "Female", "INVY", "Invalid year.", "INVM", "Invalid month.", "INVD", "Invalid day.");
+        getDataForInvalidPesel_with_errorCode_INVY_INVM_INVD(pesel, false, null, "Female", "INVY", "Invalid year.", "INVM", "Invalid month.", "INVD", "Invalid day.");
     }
 
     private void getDataForInvalidPesel_with_errorCode_INVY_INVM(String pesel, boolean isValid, String dateOfBirth, String gender, String errorCode, String errorMessage, String errorCode1, String errorMessage1) {
@@ -193,7 +196,6 @@ public class TestInvalidPesel {
     @Test
     public void getDataForInvalidPesel_with_errorCode_INVY_INVM() {
         String pesel = "81600150504";
-        getDataForInvalidPesel_with_errorCode_INVY_INVM(pesel, false, "null", "Female", "INVY", "Invalid year.", "INVM", "Invalid month.");
+        getDataForInvalidPesel_with_errorCode_INVY_INVM(pesel, false, null, "Female", "INVY", "Invalid year.", "INVM", "Invalid month.");
     }
-
 }
