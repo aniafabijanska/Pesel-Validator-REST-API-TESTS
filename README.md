@@ -7,10 +7,15 @@ I checked the last days of each month
 TEST INVALID PESEL
 I check error codes and corresponding messages:
         "INVL", "Invalid length. Pesel should have exactly 11 digits.
+        
         "NBRQ", "Invalid characters. Pesel should be a number."
+        
         "INVY", "Invalid year."
+        
         "INVM", "Invalid month."
+        
         "INVD", "Invalid day." (for invalid day "last" of each month)
+        
         "INVC", "Check sum is invalid. Check last digit."
         
 REST API TEST
